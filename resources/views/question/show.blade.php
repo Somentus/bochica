@@ -1,5 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    Welcome to Bochica.
+
+	{{ $question }}
+
 @endsection
