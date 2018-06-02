@@ -14,6 +14,12 @@ class QuestionController extends Controller
         $this->middleware('auth')->except('show');
     }
 
+    public function index()
+    {
+        $questions = Question::all();
+        return view('questions.index', compact('questions'));
+    }
+
     public function create()
     {
         return view('questions.create');
@@ -35,7 +41,17 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
-    	return view('questions.show', compact('question'));
+        if(Auth::check()) {
+            if($question->user_id == Auth::id()) {
+                // User owns question
+                return view('questions.owner', compact('question'));     
+            } else {
+                // User does not own question
+            }
+        } else {
+            // Visitor is not logged in
+    	   return view('questions.show', compact('question'));
+        }
     }
 
     public function edit(Question $question)
@@ -62,6 +78,15 @@ class QuestionController extends Controller
 	        ]);
 	    }
 
-	    redirect('showQuestion');
+	    return redirect('/questions/'.$questionId);
+    }
+
+    public function destroy(Question $question)
+    {
+        if($question->user_id == Auth::id()) {
+            $question->delete();
+        }
+
+        return redirect('/questions/');
     }
 }

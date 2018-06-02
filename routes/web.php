@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/create', 'QuestionController@create')->name('createQuestion');
-Route::post('/questions', 'QuestionController@store')->name('storeQuestion');
-Route::get('/questions/{question}', 'QuestionController@show')->name('showQuestion');
-Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('editQuestion');
+Route::get('/questions', 'QuestionController@index')->name('allQuestions');
+Route::get('/questions/create', 'QuestionController@create')->name('createQuestion');
+Route::post('/questions', 'QuestionController@store');
+Route::get('/questions/{question}', 'QuestionController@show');
+Route::get('/questions/{question}/edit', 'QuestionController@edit');
 Route::patch('/questions/{question}', 'QuestionController@update');
+Route::delete('questions/{question}', 'QuestionController@destroy');
