@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/create', 'QuestionController@create')->name('createQuestion');
+Route::post('/questions', 'QuestionController@store')->name('storeQuestion');
+Route::get('/questions/{question}', 'QuestionController@show')->name('showQuestion');
+Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('editQuestion');
+Route::patch('/questions/{question}', 'QuestionController@update');
