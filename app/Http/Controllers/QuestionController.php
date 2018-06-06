@@ -17,7 +17,8 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('questions.index', compact('questions'));
+        $username = Auth::user()->name;
+        return view('questions.index', compact('questions', 'username'));
     }
 
     public function create()
