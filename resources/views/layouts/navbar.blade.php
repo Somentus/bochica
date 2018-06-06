@@ -11,6 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+                <li><a class="nav-link" href="{{ route('allQuestions') }}">All Questions</a></li>
                 <li><a class="nav-link" href="{{ route('createQuestion') }}">Ask Question</a></li>
             </ul>
 
