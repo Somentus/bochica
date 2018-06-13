@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@home')->name('homepage');
+Route::get('/', 'QuestionController@index')->name('homepage');
 
 Route::get('/questions', 'QuestionController@index')->name('allQuestions');
 Route::get('/questions/create', 'QuestionController@create')->name('createQuestion');
