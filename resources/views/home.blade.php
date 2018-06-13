@@ -2,22 +2,34 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+    @foreach($questions as $question)
+        <div class="row pb-3">
+            <div class="border p-3 w-100" >
+                <div class="row">
+                    <div class="col-md-9">    
+                        <a href="/questions/{{ $question->id }}">
+                            <h5>{{ $question->title }}</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="float-right">
+                            X Points
                         </div>
-                    @endif
-
-                    You are logged in!
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ $question->user->name }}, 
+                        {{ \Carbon\Carbon::createFromTimeStamp(strtotime($question->created_at))->diffForHumans() }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="float-right">
+                            Tags
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 </div>
 @endsection
