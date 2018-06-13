@@ -30,20 +30,18 @@
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        <div class="col-md-8">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                    <div class="col-md-9">                    
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                            @yield('content')
-                        </div>
+                        @yield('content')
                     </div>
                     <div class="col-md-3">
                         @include('layouts.sidebar')
