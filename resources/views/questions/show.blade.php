@@ -76,6 +76,10 @@
             </div>
         </div>
 
+        @if($question->answers->count() > 0)
+            <hr>
+        @endif
+
         @foreach( $question->answers as $answer)
             <div class="row pb-3">
                 <div class="border p-3 w-100">
