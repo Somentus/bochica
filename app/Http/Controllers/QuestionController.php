@@ -50,6 +50,7 @@ class QuestionController extends Controller
                 return view('questions.owner', compact('question'));     
             } else {
                 // User does not own question
+                return view('questions.show', compact('question'));
             }
         } else {
             // Visitor is not logged in
