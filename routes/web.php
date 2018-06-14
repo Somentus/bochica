@@ -19,5 +19,7 @@ Route::get('/questions/create', 'QuestionController@create')->name('createQuesti
 Route::post('/questions', 'QuestionController@store');
 Route::get('/questions/{question}', 'QuestionController@show');
 Route::get('/questions/{question}/edit', 'QuestionController@edit');
+Route::post('/answers/{answer}/vote', 'AnswerController@vote');
+Route::post('/questions/{question}/vote', 'QuestionController@vote');
 Route::patch('/questions/{question}', 'QuestionController@update');
 Route::delete('questions/{question}', 'QuestionController@destroy');

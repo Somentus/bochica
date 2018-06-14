@@ -32,4 +32,16 @@ class Question extends Model
     {
         return $this->morphMany('App\Vote', 'votable');
     }
+
+    public function upvotes()
+    {
+        $upvotes = Vote::where('votable_id', $this->id)->where('votable_type', 'Question')->where('score', 1)->count();
+        return $upvotes;
+    }
+
+    public function downvotes()
+    {
+        $downvotes = Vote::where('votable_id', $this->id)->where('votable_type', 'Question')->where('score', 0)->count();
+        return $downvotes;
+    }
 }
