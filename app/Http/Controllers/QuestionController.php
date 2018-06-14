@@ -47,7 +47,7 @@ class QuestionController extends Controller
         if(Auth::check()) {
             if($question->user_id == Auth::id()) {
                 // User owns question
-                return view('questions.owner', compact('question'));     
+                return view('questions.show', compact('question'));     
             } else {
                 // User does not own question
                 return view('questions.show', compact('question'));
