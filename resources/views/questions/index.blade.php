@@ -24,7 +24,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="float-right">
-                            Tags
+                            @foreach($question->tags as $tag)
+                                {{ $tag->name }}
+                            @endforeach
                         </div>
                     </div>
                 </div>
