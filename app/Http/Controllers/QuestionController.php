@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Question;
+use App\Answer;
+use App\Comment;
+use App\Tag;
 
 class QuestionController extends Controller
 {
