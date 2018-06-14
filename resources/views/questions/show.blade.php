@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-12">
                         <small>
                             {{ $question->user->name }}, 
                             {{ \Carbon\Carbon::createFromTimeStamp(strtotime($question->created_at))->diffForHumans() }}
@@ -33,5 +33,37 @@
                 </div>
             </div>
         </div>
-	</div>
+
+        @foreach( $question->answers as $answer)
+            <div class="row pb-3">
+                <div class="border p-3 w-100" >
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                {{ $answer->body }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9">    
+                            <small>
+                                {{ $answer->user->name }}, 
+                                {{ \Carbon\Carbon::createFromTimeStamp(strtotime($answer->created_at))->diffForHumans() }}
+                            </small>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div class="float-right">
+                                X points
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        @endforeach
+    </div>
+
 @endsection
