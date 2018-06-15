@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Answer extends Model
 {
@@ -38,5 +39,14 @@ class Answer extends Model
     {
         $downvotes = Vote::where('votable_id', $this->id)->where('votable_type', 'Answer')->where('score', 0)->count();
         return $downvotes;
+    }
+
+    public function owned()
+    {
+        if($this->user->id == Auth::id()) { 
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

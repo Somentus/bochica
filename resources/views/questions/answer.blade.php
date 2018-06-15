@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12">
                         <p>
@@ -61,6 +61,51 @@
                         </small>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-1">
+                @if($question->owned())
+                    <div class="row">
+                        <a href="/answers/{{ $answer->id }}/choose"
+                            onclick="
+                                event.preventDefault();
+                                document.getElementById('select-answer-form').submit();
+                            ">
+                            Select as Answer
+                        </a>
+
+                        <form id="select-answer-form" action="/answers/{{ $answer->id }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                @endif
+
+                <br>
+
+                @if($answer->owned())
+                    <div class="row">
+                        <a href="/answers/{{ $answer->id }}/edit">
+                            Edit
+                        </a>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <a href="/answers/{{ $answer->id }}"
+                            onclick="
+                                event.preventDefault();
+                                document.getElementById('delete-answer-form').submit();
+                            ">
+                            Delete
+                        </a>
+
+                        <form id="delete-answer-form" action="/answers/{{ $answer->id }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

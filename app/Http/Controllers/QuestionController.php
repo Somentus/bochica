@@ -88,7 +88,7 @@ class QuestionController extends Controller
 
     public function destroy(Question $question)
     {
-        if($question->user_id == Auth::id()) {
+        if($question->owned()) {
             $question->delete();
         }
 

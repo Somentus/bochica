@@ -44,7 +44,11 @@
                 </div>
             </div>
 
+            @if($question->owned())
+            <div class="col-md-10">
+            @else
             <div class="col-md-11">
+            @endif
                 <div class="row">
                     <div class="col-md-12">    
                         <h5><strong>
@@ -68,6 +72,30 @@
                     </div>
                 </div>
             </div>
+
+            @if($question->owned())
+                <div class="col-md-1">
+                    <div class="row">
+                        <a href="/questions/{{ $question->id }}/edit">
+                            Edit
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="/questions/{{ $question->id }}"
+                            onclick="
+                                event.preventDefault();
+                                document.getElementById('delete-question-form').submit();
+                            ">
+                            Delete
+                        </a>
+
+                        <form id="delete-question-form" action="/questions/{{ $question->id }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>
