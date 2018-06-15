@@ -78,10 +78,11 @@
                             @csrf
                         </form>
                     </div>
-                @endif
 
                 <br>
 
+                @endif
+                
                 @if($answer->owned())
                     <div class="row">
                         <a href="/answers/{{ $answer->id }}/edit">
